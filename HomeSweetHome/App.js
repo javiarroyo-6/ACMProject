@@ -49,10 +49,10 @@ const HomeStackNavigator = createStackNavigator({
     return{
       headerLeft:(
         <Icon  
-        style ={{ paddingLeft:10}}
-        name="md-menu" 
-        size={30} 
-        onPress={()=> navigation.openDrawer()}  
+          style ={{ paddingLeft:10}}
+          name="md-menu" 
+          size={30} 
+          onPress={()=> navigation.openDrawer()}  
         />
       )
     }
