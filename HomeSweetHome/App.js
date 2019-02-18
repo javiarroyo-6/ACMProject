@@ -9,10 +9,12 @@ import {
 } from 'react-navigation'
 import Icon from '@expo/vector-icons/Ionicons';
 import LoginScreen from './Screens/LoginScreen.js'
-import HomeScreen from './Screens/HomeScreen.js';
-import Profile from './Screens/Profile.js';
-import Forum from './Screens/Forum.js';
-import Living from './Screens/Living.js'
+import Chores from './Screens/Chores.js';
+import Budget from './Screens/Budget.js';
+import Home from './Screens/Home.js';
+import ViewMap from './Screens/ViewMap';
+
+
 
 
 class App extends React.Component {
@@ -25,10 +27,11 @@ class App extends React.Component {
 
 
 
+
 const HomeTabNavigator = createBottomTabNavigator({
-    Living,
-    Forum,
-    Profile
+    Home,
+    Budget,
+    Chores
 },{
   navigationOptions:({navigation})=>{
     const {routeName} = navigation.state.routes
@@ -59,13 +62,15 @@ const HomeStackNavigator = createStackNavigator({
 const AppDrawerNavigator = createDrawerNavigator({
   Home:{
     screen:HomeStackNavigator
+  },
+  View:{
+    screen:ViewMap
   }
 })
 
 const AppSwitchNavigator = createSwitchNavigator({
   Login:{ screen: LoginScreen },
   Home:{ screen: AppDrawerNavigator}
-
 })
 
 const AppContainer = createAppContainer(AppSwitchNavigator);

@@ -6,6 +6,8 @@ import {
 } from "react-native";
 
 class HomeScreen extends Component {
+
+
     render() {
         return (
             <View style={styles.container}>
