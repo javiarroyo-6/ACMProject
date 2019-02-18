@@ -19,7 +19,7 @@ class Budget extends Component {
         super()
         this.state = {
             text:'',
-            budget:'$1,000'
+            budget:'0'
         }
         this.changeBudget = this.changeBudget.bind(this);
     }
@@ -32,10 +32,10 @@ class Budget extends Component {
         )
     }    
     
-    changeBudget(){
+    changeBudget(value){
         const previousBudget = this.state.budget
         const newState = {
-            budget: previousBudget + 10
+            budget: value
         }
         this.setState(newState);
     }
@@ -56,7 +56,8 @@ class Budget extends Component {
                 <Container>
                     <Content>
                         <Button rounded info style={styles.position}
-                            onPress={(this.prompt)}
+                            onPress={() => AlertIOS.prompt('Enter a Budget', null, [{text: 'Cancel', 
+                            onPress: () => console.log('Cancel'), }, {text: 'OK', onPress: (value) => this.changeBudget(value), }])}
                         >
                             <Text style={styles.text}> + </Text>
                         </Button>
@@ -64,7 +65,7 @@ class Budget extends Component {
                             <CardItem bordered>
                                 <Body>
                                     <Text>
-                                        Budget:{this.state.budget}
+                                        Budget: ${this.state.budget}
                                     </Text>
                                 </Body>
                             </CardItem>
@@ -83,6 +84,8 @@ class Budget extends Component {
         );
     }
 }
+
+
 export default Budget;
 
 const styles = StyleSheet.create({
